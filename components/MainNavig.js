@@ -15,35 +15,37 @@ const Stack = createNativeStackNavigator();
 class MainNavig extends React.PureComponent {
 
     render() {
-        return (
-      <Stack.Navigator headerMode={'screen'}>
+        return (    
+      <Stack.Navigator   screenOptions={{
+        headerTransparent: true,
+        headerTitle: '',
+      }}
+    >
         <Stack.Screen
           name="Home"
           component={Homepage}
           options={{
-            headerTransparent: true,
-            headerTitle: '',
-            headerRight: () => <Navbars/>,
+             header: ({navigation}) => <Navbars navigation={navigation}  />,
           }}
         />
+
+ 
         <Stack.Screen
           name="Detail"
           component={Detail}
           options={{headerTransparent: true}}
         />
-
-<Stack.Screen
-            name="Search"
-            component={Search}
-            options={{ headerTransparent: true }}
-          />
-
  
 
-   
+ <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{headerTransparent: true}}
+
+        />
+  
 </Stack.Navigator>
     );
   }
 }
-
 export default MainNavig;
